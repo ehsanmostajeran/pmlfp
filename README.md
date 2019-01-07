@@ -89,7 +89,6 @@ In this project, firstly loading required libraries. Then import and prepare dat
 > contRf <- trainControl(method="cv", 5)
 > modelRf <- train(classe ~ ., data=trainData, method="rf", trControl=contRf, ntree=250)
 > modelRf
-```
 
 Random Forest 
 
@@ -109,11 +108,11 @@ Resampling results across tuning parameters:
 
 Accuracy was used to select the optimal model using the largest value.
 The final value used for the model was mtry = 2.
+```
 
 ```
 > predictRf <- predict(modelRf, testData)
 > confusionMatrix(testData$classe, predictRf)
-```
 
 Confusion Matrix and Statistics
 
@@ -146,14 +145,15 @@ Prevalence             0.2850   0.1934   0.1774   0.1607   0.1835
 Detection Rate         0.2843   0.1925   0.1733   0.1599   0.1832
 Detection Prevalence   0.2845   0.1935   0.1743   0.1638   0.1839
 Balanced Accuracy      0.9987   0.9972   0.9879   0.9950   0.9987
+```
 
 ```
 > accuracy <- postResample(predictRf, testData$classe)
 > accuracy
-```
 
 Accuracy     Kappa 
 0.9932031 0.9914019 
+```
 
 ```
 > oose <- 1 - as.numeric(confusionMatrix(testData$classe, predictRf)$overall[1])
@@ -166,7 +166,7 @@ Accuracy     Kappa
 ```
 result <- predict(modelRf, testCleaned[, -length(names(testCleaned))])
 > result
-```
 
 [1] B A B A A E D B A A B C B A E E A B B B
 Levels: A B C D E
+```
